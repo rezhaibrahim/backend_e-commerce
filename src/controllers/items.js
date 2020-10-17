@@ -1,6 +1,6 @@
 const itemsModel = require('../models/items')
 const responseStandard = require('../helpers/response')
-const { productSchema: schema, colorSchema: schemaC, colorUpdateSchema: schemaCU } = require('../helpers/schemaValidation')
+const { productSchema: schema } = require('../helpers/schemaValidation')
 const searching = require('../helpers/search')
 const sorting = require('../helpers/sort')
 const paging = require('../helpers/pagination')
@@ -61,19 +61,49 @@ module.exports = {
   getItems: async (req, res) => {
     const { searchKey, searchValue } = searching.name(req.query.search)
     const { sortKey, sortBy } = sorting.name(req.query.sort)
-    const count = await productsModel.countModel([searchKey, searchValue, sortKey, sortBy])
+    const count = await itemsModel.countModel([searchKey, searchValue, sortKey, sortBy])
     const page = paging(req, count[0].count)
     const { offset, pageInfo } = page
     const { limitData: limit } = pageInfo
 
-    const results = await productsModel.getModel([searchKey, searchValue, sortKey, sortBy], [limit, offset])
+    const results = await itemsModel.getModel([searchKey, searchValue, sortKey, sortBy], [limit, offset])
     if (results.length) {
       return responseStandard(res, 'List of list Items', { results, pageInfo })
     } else {
       return responseStandard(res, 'There is no data in list', {}, 404, false)
     }
   },
-  detailProduct: async (req, res) => {
+  getNewItems: async (req, res) => {
+    const { searchKey, searchValue } = searching.name(req.query.search)
+    const { sortKey, sortBy } = sorting.name(req.query.sort)
+    const count = await itemsModel.countModel([searchKey, searchValue, sortKey, sortBy])
+    const page = paging(req, count[0].count)
+    const { offset, pageInfo } = page
+    const { limitData: limit } = pageInfo
+
+    const results = await itemsModel.getNewModel([searchKey, searchValue, sortKey, sortBy], [limit, offset])
+    if (results.length) {
+      return responseStandard(res, 'List of list Items', { results, pageInfo })
+    } else {
+      return responseStandard(res, 'There is no data in list', {}, 404, false)
+    }
+  },
+  getPopularItems: async (req, res) => {
+    const { searchKey, searchValue } = searching.name(req.query.search)
+    const { sortKey, sortBy } = sorting.name(req.query.sort)
+    const count = await itemsModel.countModel([searchKey, searchValue, sortKey, sortBy])
+    const page = paging(req, count[0].count)
+    const { offset, pageInfo } = page
+    const { limitData: limit } = pageInfo
+
+    const results = await itemsModel.getPopularModel([searchKey, searchValue, sortKey, sortBy], [limit, offset])
+    if (results.length) {
+      return responseStandard(res, 'List of list Items', { results, pageInfo })
+    } else {
+      return responseStandard(res, 'There is no data in list', {}, 404, false)
+    }
+  },
+  detailItems: async (req, res) => {
     const { id } = req.params
 
     const results = await itemsModel.detailModel(id)
@@ -83,7 +113,7 @@ module.exports = {
       responseStandard(res, `Product with id ${id} is not found`, {}, 404, false)
     }
   },
-  updateProduct: async (req, res) => {
+  updateItems: async (req, res) => {
     const { id } = req.params
 
     let { value: results, error } = schema.validate(req.body)
@@ -111,7 +141,7 @@ module.exports = {
       }
     }
   },
-  deleteProduct: async (req, res) => {
+  deleteItems: async (req, res) => {
     const { id } = req.params
 
     const isExist = await itemsModel.detailModel(id)
@@ -126,24 +156,23 @@ module.exports = {
       responseStandard(res, `Product with id ${id} is not found`, {}, 404, false)
     }
   },
-  getSellerProducts: async (req, res) => {
+  getSellerItems: async (req, res) => {
     const { id } = req.data
     const { searchKey, searchValue } = searching.name(req.query.search)
     const { sortKey, sortBy } = sorting.name(req.query.sort)
-    const count = await itemsModel.countModel()
+    const count = await itemsModel.countModel([searchKey, searchValue])
     const page = paging(req, count[0].count)
     const { offset, pageInfo } = page
     const { limitData: limit } = pageInfo
 
     const results = await itemsModel.getSellerModel([searchKey, searchValue, sortKey, sortBy], [id, limit, offset])
-    console.log("cel:",results);
     if (results.length) {
       return responseStandard(res, 'List of Items', { results, pageInfo })
     } else {
       return responseStandard(res, 'There is no data in list', {}, 404, false)
     }
   },
-  detailSellerProduct: async (req, res) => {
+  detailSellerItems: async (req, res) => {
     const { id } = req.params
     const { id: sellerId } = req.data
 

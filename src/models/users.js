@@ -4,27 +4,29 @@ const tableRole='role'
 const tableGender='gender'
 const model = require('../helpers/connectionDB')
 
-const column = `${table}.id, ${tableRole}.name AS ${tableRole}, ${tableDetail}.name, ${table}.email, ${table}.password, ${tableDetail}.phone, ${tableGender}.name AS ${tableGender}, ${tableDetail}.birthdate, ${tableDetail}.create_at, ${tableDetail}.update_at`
-const join = `INNER JOIN ${tableDetail} ON ${tableDetail}.user_id=${table}.id INNER JOIN ${tableRole} ON ${tableRole}.id=${table}.role_id INNER JOIN ${tableGender} ON ${tableGender}.id=${tableDetail}.gender_id`
+// const column = `${table}.id, ${tableRole}.name AS ${tableRole}, ${tableDetail}.name, ${table}.email, ${table}.password, ${tableDetail}.phone, ${tableGender}.name AS ${tableGender}, ${tableDetail}.birthdate, ${tableDetail}.create_at, ${tableDetail}.update_at`
+// const join = `INNER JOIN ${tableDetail} ON ${tableDetail}.user_id=${table}.id INNER JOIN ${tableRole} ON ${tableRole}.id=${table}.role_id INNER JOIN ${tableGender} ON ${tableGender}.id=${tableDetail}.gender_id`
+const column = 'users.id, userDetail.name, users.email, users.password, userDetail.phone, gender.name AS gender, userDetail.birthdate, userDetail.picture AS profile_picture'
+const join = 'INNER JOIN userDetail ON userDetail.user_id=users.id INNER JOIN gender ON gender.id=userDetail.gender_id'
 
 module.exports = {
-  createUserModel: (data = {}) => { // role_id, email, password
+  createUserModel: (data = {}) => { 
     const query = `INSERT INTO ${table} SET ?`
     console.log(query);
     const results = model(query, data)
     return results
   },
-  createDetailModel: (data = {}) => { // user_id, name, picture, phone, gender_id, birthdate
+  createDetailModel: (data = {}) => { 
     const query = `INSERT INTO ${tableDetail} SET ?`
     const results = model(query, data)
     return results
   },
-  checkEmailModel: (data = {}) => { // no duplicat email
+  checkEmailModel: (data = {}) => { 
     const query = `SELECT * FROM ${table} WHERE ?`
     const results = model(query, data)
     return results
   },
-  checkPhoneModel: (data = {}) => { // no duplicat email
+  checkPhoneModel: (data = {}) => { 
     const query = `SELECT * FROM ${tableDetail} WHERE ?`
     const results = model(query, data)
     return results
@@ -34,7 +36,7 @@ module.exports = {
   //   const results = model(query, data)
   //   return results
   // },
-  getUsersModel: (arr, data = []) => { // get all user (id, role, email, password)
+  getUsersModel: (arr, data = []) => { 
     const user = `${table}.id, ${tableRole}.name AS ${tableRole}, ${table}.email, ${table}.password`
     const role = `LEFT JOIN ${tableRole} ON ${tableRole}.id=${table}.role_id`
     const search = `WHERE ${table}.${arr[0]} LIKE '%${arr[1]}%'`
@@ -42,28 +44,38 @@ module.exports = {
     const results = model(query, data)
     return results
   },
-  detailUserModel: (data = {}) => { // get detail user (id, role, email, password, name, picture, phone, gender_id, birthdate)
+  detailUserModel: (data = {}) => { 
     const query = `SELECT ${column} FROM ${table} ${join} WHERE users.id=?`
     const results = model(query, data)
     return results
   },
-  countUsersModel: (arr) => { // count for paging
+  countUsersModel: (arr) => { 
     const search = `WHERE ${arr[0]} LIKE '%${arr[1]}%'`
     const query = `SELECT COUNT(*) as count FROM ${table} ${search}`
     const results = model(query)
     return results
   },
-  updateUserModel: (data = []) => { // update email and password
+  updateUserModel: (data = []) => { 
     const query = `UPDATE ${table} SET ? WHERE id=?`
     const results = model(query, data)
     return results
   },
-  updateDetailModel: (data = []) => { // update detail (name, picture, phone, gender_id, birthdate)
+  updateDetailModel: (data = []) => { 
     const query = `UPDATE ${tableDetail} SET ? WHERE user_id=?`
     const results = model(query, data)
     return results
   },
-  deleteUserModel: (data = {}) => { // delete user by id
+  updateUserPartialModel: (data = []) => { // update email and password
+    const query = `UPDATE ${table} SET ? WHERE id=?`
+    const results = model(query, data)
+    return results
+  },
+  updateDetailPartialModel: (arr, data = []) => { // update detail (name, picture, phone, gender_id, birthdate)
+    const query = `UPDATE ${tableDetail} SET ${arr} WHERE user_id=?`
+    const results = model(query, data)
+    return results
+  },
+  deleteUserModel: (data = {}) => { 
     const query = `DELETE FROM ${table} WHERE id=?`
     const results = model(query, data)
     return results

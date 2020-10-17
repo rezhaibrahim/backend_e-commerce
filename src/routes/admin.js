@@ -6,6 +6,7 @@ const usersController = require('../controllers/users')
 const categoriesController = require('../controllers/category')
 const itemsController = require('../controllers/items')
 
+const upload = require('../helpers/upload')
 // roles
 router.post('/roles', rolesController.create) // add roles
 router.get('/roles', rolesController.getRoles) // show roles
@@ -32,18 +33,17 @@ router.get('/users/:id', usersController.getDetailForAdmin) // users
 router.delete('/users/:id', usersController.deleteUserForAdmin) // users
 
 // categories
-router.post('/category', categoriesController.create) // add category
+router.post('/category', upload.single('picture'), categoriesController.create) // add category
 router.get('/category', categoriesController.getCategories) // show category
 router.get('/category/:id', categoriesController.detailCategory) // show detail category
 router.put('/category/:id', categoriesController.changeName) // edit category
 router.delete('/category/:id', categoriesController.deleteRole) // delete category
 
-// product
-router.post('items/', itemsController.create) // add product
-// router.post('/color', itemsController.createColor) // add product
-router.get('items/', itemsController.getItems) // show product
-router.get('items/:id', itemsController.detailProduct) // show detail product
-router.put('items/:id', itemsController.updateProduct) // edit product
-router.delete('items/:id', itemsController.deleteProduct) // delete product
+// Items
+router.post('items/', itemsController.create) // add Items
+router.get('items/', itemsController.getItems) // show Items
+router.get('items/:id', itemsController.detailItems) // show detail Items
+router.put('items/:id', itemsController.updateItems) // edit Items
+router.delete('items/:id', itemsController.deleteItems) // delete Items
 
 module.exports = router

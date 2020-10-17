@@ -1,8 +1,9 @@
+
 const qs = require('querystring')
 const { APP_URL } = process.env
 
 module.exports = (req, totalData) => {
-  let { page = 1, limit = 5 } = req.query
+  let { page = 1, limit = 10 } = req.query
   page = parseInt(page)
   limit = parseInt(limit)
   if (page < 1) {
@@ -10,7 +11,7 @@ module.exports = (req, totalData) => {
   }
 
   if (limit < 1 || limit > 100) {
-    limit = 5
+    limit = 10
   }
   const totalPage = Math.ceil(totalData / limit)
 

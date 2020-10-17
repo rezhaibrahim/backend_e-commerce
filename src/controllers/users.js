@@ -2,59 +2,46 @@ const usersModel = require('../models/users')
 const paging = require('../helpers/pagination')
 const searching = require('../helpers/search')
 const responseStandard = require('../helpers/response')
-const { custSchema: schemaC } = require('../helpers/schemaValidation')
+const { custSchema: schemaC,updateCustSchema:updateSchema } = require('../helpers/schemaValidation')
 const bcrypt = require('bcrypt')
 
 module.exports = {
-  create: async (req, res) => {
-    if (req.fileValidationError) {
-      return responseStandard(res, 'Error', { error: req.fileValidationError }, 500, false)
-    }
-    const picture = `/uploads/${req.file.filename}`
-    console.log(picture)
-
+  createCustomer: async (req, res) => {
     const { value: results, error } = schemaC.validate(req.body)
     if (error) {
       return responseStandard(res, 'Error', { error: error.message }, 400, false)
     } else {
-      const { roleId, name, email, password, phone, genderId, birthdate } = results
+      const { name, email, password } = results
       const isExist = await usersModel.checkEmailModel({ email })
       if (!isExist.length) {
-        const isExist = await usersModel.checkPhoneModel({ phone })
-        if (!isExist.length) {
-          const salt = await bcrypt.genSalt(10)
-          const hashedPassword = await bcrypt.hash(password, salt)
-          const users = {
-            role_id: roleId,
-            email: email,
-            password: hashedPassword
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(password, salt)
+        const users = {
+          role_id: 2,
+          email: email,
+          password: hashedPassword
+        }
+        const createUser = await usersModel.createUserModel(users)
+        if (createUser.affectedRows) {
+          const detail = {
+            user_id: createUser.insertId,
+            name: name,
           }
-          const createUser = await usersModel.createUserModel(users)
-          if (createUser.affectedRows) {
-            const detail = {
+          
+          const createDetail = await usersModel.createDetailModel(detail)
+          if (createDetail.affectedRows) {
+            const data = {
               user_id: createUser.insertId,
-              name: name,
-              image: picture,
-              phone: phone,
-              gender_id: genderId,
-              birthdate: birthdate
+              name,
+              email,
+              password: undefined
             }
-            const createDetail = await usersModel.createDetailModel(detail)
-            if (createDetail.affectedRows) {
-              const data = {
-                ...users,
-                ...detail,
-                password: null
-              }
-              return responseStandard(res, 'Success! User has been created!', { data: data })
-            } else {
-              return responseStandard(res, 'Failed to create user!', {}, 400, false)
-            }
+            return responseStandard(res, 'Success! User has been created!', { data: data })
           } else {
             return responseStandard(res, 'Failed to create user!', {}, 400, false)
           }
         } else {
-          return responseStandard(res, 'Phone has already used', {}, 400, false)
+          return responseStandard(res, 'Failed to create user!', {}, 400, false)
         }
       } else {
         return responseStandard(res, 'Email has already used', {}, 400, false)
@@ -103,15 +90,16 @@ module.exports = {
     if (req.fileValidationError) {
       return responseStandard(res, 'Error', { error: req.fileValidationError }, 500, false)
     }
-    const picture = `/uploads/${req.file.filename}`
-    console.log(picture)
+    const image = `/uploads/${req.file.filename}`
+    // console.log(image)
 
     const { id } = req.data
-    const { value: results, error } = schemaC.validate(req.body)
+    console.log("data",req.data.id);
+    const { value: results, error } = updateSchema.validate(req.body)
     if (error) {
       return responseStandard(res, 'Error', { error: error.message }, 400, false)
     } else {
-      const { roleId, name, email, password, phone, genderId, birthdate } = results
+      const {  name, email, password, phone, genderId, birthdate } = results
       const isExist = await usersModel.checkEmailModel({ email })
       console.log(isExist)
       let existEmail = 0
@@ -132,7 +120,7 @@ module.exports = {
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(password, salt)
             const users = {
-              role_id: roleId,
+              role_id: 2,
               email: email,
               password: hashedPassword
             }
@@ -141,8 +129,8 @@ module.exports = {
               const detail = {
                 user_id: id,
                 name: name,
-                picture: picture,
-                phone: phone_number,
+                image: image,
+                phone: phone,
                 gender_id: genderId,
                 birthdate: birthdate
               }
@@ -164,6 +152,7 @@ module.exports = {
       }
     }
   },
+  
   deleteUser: async (req, res) => {
     const { id } = req.data
 

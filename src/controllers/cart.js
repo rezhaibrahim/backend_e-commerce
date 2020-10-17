@@ -12,11 +12,11 @@ module.exports = {
     if (error) {
       return responseStandard(res, 'Error', { error: error.message }, 400, false)
     } else {
-      const { productId, quantity } = results
+      const { itemsId, qty } = results
       const cart = {
         user_id: userId,
-        product_id: productId,
-        quantity
+        items_id: itemsId,
+        qty
       }
       const createCart = await cartModel.createModel(cart)
       if (createCart.affectedRows) {
@@ -24,7 +24,7 @@ module.exports = {
           id: createCart.insertId,
           ...cart
         }
-        return responseStandard(res, 'Add cart succesfully!', { data: data })
+        return responseStandard(res, 'Add cart succesfully!', { data: data },200)
       } else {
         return responseStandard(res, 'Failed to add cart', {}, 400, false)
       }
@@ -32,7 +32,6 @@ module.exports = {
   },
   getAll: async (req, res) => {
     const { id: userId } = req.data
-
     const { searchKey, searchValue } = searching.name(req.query.search)
     const { sortKey, sortBy } = sorting.name(req.query.sort)
     const count = await cartModel.countModel(userId)
@@ -41,6 +40,7 @@ module.exports = {
     const { limitData: limit } = pageInfo
 
     const results = await cartModel.getModel([searchKey, searchValue, sortKey, sortBy], [userId, limit, offset])
+    console.log(results[0]);
     if (results.length) {
       return responseStandard(res, 'My Cart', { results, pageInfo })
     } else {
@@ -50,20 +50,20 @@ module.exports = {
   editCart: async (req, res) => {
     const { id: userId } = req.data
     const { id: cartId } = req.params
-    const { quantity } = req.body
-    if (quantity > 0) {
+    const { qty } = req.body
+    if (qty > 0) {
       const isExist = await cartModel.detailModel([userId, cartId])
       if (!isExist.length) {
         return responseStandard(res, 'You don\'t have this cart', {}, 400, false)
       } else {
-        const edit = await cartModel.updateModel([{ quantity: quantity }, cartId])
+        const edit = await cartModel.updateModel([{ qty: qty }, cartId])
         if (edit.affectedRows) {
           return responseStandard(res, 'Update cart succesfully')
         } else {
           return responseStandard(res, 'Failed to update cart', {}, 400, false)
         }
       }
-    } else if (quantity === '0') {
+    } else if (qty === '0') {
       const deleteCart = await cartModel.deleteModel([userId, cartId])
       if (deleteCart.affectedRows) {
         return responseStandard(res, 'Product deleted from cart')
