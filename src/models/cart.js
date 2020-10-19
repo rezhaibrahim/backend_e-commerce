@@ -2,6 +2,8 @@ const table = 'carts'
 const tableUser = 'users'
 const tableItem = 'items'
 const tableImage = 'image'
+const tableStore = 'store'
+const tableDetail = 'userDetail'
 const model = require('../helpers/connectionDB')
 
 const column =`${table}.id,qty,item, price, picture`
@@ -15,6 +17,9 @@ INNER JOIN (
   GROUP BY ${tableItem}.id
 ) itemImage ON  itemImage.itemImage_id = ${table}.items_id
 `
+
+const column2  = `${table}.id, ${tableItem}.seller_id, ${tableStore}.name AS store, ${table}.user_id, ${tableDetail}.name AS user, ${tableItem}.name, ${tableItem}.price, ${table}.qty, ${table}.qty*${tableItem}.price AS total`
+const join2 = `LEFT JOIN ${tableDetail} ON ${tableDetail}.user_id=${table}.user_id LEFT JOIN ${tableItem} ON ${tableItem}.id=${table}.items_id LEFT JOIN ${tableStore} ON ${tableStore}.user_id=${tableItem}.seller_id`
 module.exports = {
   createModel: (data = {}) => {
     const query = `INSERT INTO ${table} SET ?`
@@ -31,6 +36,11 @@ module.exports = {
     const results = model(query, data)
     return results
   },
+  getAllModel: (data = {}) => {
+    const query = `SELECT ${column2} FROM ${table} ${join2} WHERE ${table}.user_id=?`
+    const results = model(query, data)
+    return results
+  },
   detailModel: (data = []) => {
     const query = `SELECT * FROM ${table} WHERE user_id=? AND id=?`
     const results = model(query, data)
@@ -43,6 +53,11 @@ module.exports = {
   },
   deleteModel: (data = []) => {
     const query = `DELETE FROM ${table} WHERE user_id=? AND id = ?`
+    const results = model(query, data)
+    return results
+  },
+  deleteAllModel: (data = []) => {
+    const query = `DELETE FROM ${table} WHERE user_id=?`
     const results = model(query, data)
     return results
   }

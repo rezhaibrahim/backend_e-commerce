@@ -4,13 +4,17 @@ const tableCondition = 'conditions'
 const tableColor = 'color'
 const tableCategory = 'categories'
 const tablePicture = 'image'
+const tableRating = 'rating'
 const model = require('../helpers/connectionDB')
 
-const column = `items.id,items.name AS itemName,price,description, categories.name AS category,conditions.name AS conditions,color.name AS color,image.picture AS picture, items.create_at, items.update_at`
-const join = `INNER JOIN conditions ON conditions.id=items.condition_id 
-INNER JOIN categories ON categories.id=items.category_id
-INNER JOIN color ON color.id=items.color_id
-INNER JOIN image ON image.items_id=items.id `
+const column = `items.id,items.name AS itemName,price,description, categories.name AS category,conditions.name AS conditions,color.name AS color,image.picture AS picture,AVG(rating.rating) AS rating, items.create_at, items.update_at`
+const join = `LEFT JOIN conditions ON conditions.id=items.condition_id 
+LEFT JOIN categories ON categories.id=items.category_id
+LEFT JOIN color ON color.id=items.color_id
+LEFT JOIN image ON image.items_id=items.id 
+LEFT JOIN rating ON rating.items_id=items.id
+`
+// rating.rating,
 // SELECT items.id AS itemImage_id,items.name AS Item,price,image.picture as picture 
 //   FROM items
 //   INNER JOIN image

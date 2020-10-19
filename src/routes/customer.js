@@ -5,7 +5,8 @@ const usersController = require('../controllers/users')
 const cartsController = require('../controllers/cart')
 const addressController = require('../controllers/address')
 const upload = require('../helpers/upload')
-
+const ratingController = require('../controllers/rating')
+const transactionController = require('../controllers/transaction')
 // user detail
 router.get('/detail', usersController.getDetailUser) // show user detail
 router.put('/edit', upload.single('picture'), usersController.updateUser) // edit user detail
@@ -35,5 +36,12 @@ router.get('/address/:id', addressController.detailAddress)
 router.put('/address/:id', addressController.updateAll) 
 router.patch('/address/:id', addressController.updatePartial) 
 router.delete('/address/:id', addressController.deleteAddress) 
+
+router.post('/rating/:id', ratingController.create) // give rating
+
+// checkout
+router.post('/checkout', transactionController.create)
+router.get('/order', transactionController.get)
+router.get('/order/:id', transactionController.detail)
 
 module.exports = router

@@ -44,6 +44,9 @@ module.exports = {
     address: joi.string().required().replace(/'/g, "\'").replace(/"/g, '\"'),
     postalCode: joi.number().required(),
     city: joi.string().required().replace(/'/g, "\'").replace(/"/g, '\"')
+  }),
+  ratingSchema: joi.object({
+    rating: joi.number().min(1).max(5).required()
   })
 }
 
