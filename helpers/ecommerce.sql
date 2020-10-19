@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 17, 2020 at 04:38 PM
+-- Generation Time: Oct 19, 2020 at 08:21 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -45,7 +45,8 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `user_id`, `name`, `recipient_name`, `recipient_phone`, `address`, `postal_code`, `city`, `create_at`, `update_at`) VALUES
-(2, 74, 'anjayani', 'aaaaaanjay', 6614991, 'jl.tanjak anjay turun anjat asoi geboy anjaz', 40404, 'bandung', '2020-10-01 17:39:41', '2020-10-02 02:58:28');
+(2, 74, 'anjayani', 'aaaaaanjay', 6614991, 'jl.tanjak anjay turun anjat asoi geboy anjaz', 40404, 'bandung', '2020-10-01 17:39:41', '2020-10-02 02:58:28'),
+(4, 80, 'rumahkita', 'rumahasaya', 6614991, 'jl.tanjak anjay turun anjat asoi geboy anjaz', 40404, 'bandung', '2020-10-19 04:47:52', '2020-10-19 04:47:52');
 
 -- --------------------------------------------------------
 
@@ -184,106 +185,86 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`id`, `items_id`, `picture`, `create_at`, `update_at`) VALUES
-(104, 147, 'assets/uploads/1602392557922.png', '2020-10-11 05:02:37', NULL),
-(105, 147, 'assets/uploads/1602392557932.png', '2020-10-11 05:02:37', NULL),
-(106, 147, 'assets/uploads/1602392557941.png', '2020-10-11 05:02:37', NULL),
-(107, 147, 'assets/uploads/1602392557946.png', '2020-10-11 05:02:37', NULL),
-(108, 148, 'assets/uploads/1602392565334.png', '2020-10-11 05:02:45', NULL),
-(109, 148, 'assets/uploads/1602392565342.png', '2020-10-11 05:02:45', NULL),
-(110, 148, 'assets/uploads/1602392565345.png', '2020-10-11 05:02:45', NULL),
-(111, 148, 'assets/uploads/1602392565353.png', '2020-10-11 05:02:45', NULL),
-(112, 149, 'assets/uploads/1602392566662.png', '2020-10-11 05:02:46', NULL),
-(113, 149, 'assets/uploads/1602392566715.png', '2020-10-11 05:02:46', NULL),
-(114, 149, 'assets/uploads/1602392566723.png', '2020-10-11 05:02:46', NULL),
-(115, 149, 'assets/uploads/1602392566727.png', '2020-10-11 05:02:46', NULL),
-(116, 150, 'assets/uploads/1602392567925.png', '2020-10-11 05:02:47', NULL),
-(117, 150, 'assets/uploads/1602392567941.png', '2020-10-11 05:02:47', NULL),
-(118, 150, 'assets/uploads/1602392567946.png', '2020-10-11 05:02:47', NULL),
-(119, 150, 'assets/uploads/1602392567948.png', '2020-10-11 05:02:47', NULL),
-(120, 151, 'assets/uploads/1602392568966.png', '2020-10-11 05:02:49', NULL),
-(121, 151, 'assets/uploads/1602392568983.png', '2020-10-11 05:02:49', NULL),
-(122, 151, 'assets/uploads/1602392568986.png', '2020-10-11 05:02:49', NULL),
-(123, 151, 'assets/uploads/1602392568988.png', '2020-10-11 05:02:49', NULL),
-(124, 152, 'assets/uploads/1602392570196.png', '2020-10-11 05:02:50', NULL),
-(125, 152, 'assets/uploads/1602392570209.png', '2020-10-11 05:02:50', NULL),
-(126, 152, 'assets/uploads/1602392570212.png', '2020-10-11 05:02:50', NULL),
-(127, 152, 'assets/uploads/1602392570214.png', '2020-10-11 05:02:50', NULL),
-(128, 153, 'assets/uploads/1602392571401.png', '2020-10-11 05:02:51', NULL),
-(129, 153, 'assets/uploads/1602392571409.png', '2020-10-11 05:02:51', NULL),
-(130, 153, 'assets/uploads/1602392571412.png', '2020-10-11 05:02:51', NULL),
-(131, 153, 'assets/uploads/1602392571414.png', '2020-10-11 05:02:51', NULL),
-(132, 154, 'assets/uploads/1602392572521.png', '2020-10-11 05:02:52', NULL),
-(133, 154, 'assets/uploads/1602392572533.png', '2020-10-11 05:02:52', NULL),
-(134, 154, 'assets/uploads/1602392572536.png', '2020-10-11 05:02:52', NULL),
-(135, 154, 'assets/uploads/1602392572539.png', '2020-10-11 05:02:52', NULL),
-(136, 155, 'assets/uploads/1602392573779.png', '2020-10-11 05:02:53', NULL),
-(137, 155, 'assets/uploads/1602392573795.png', '2020-10-11 05:02:53', NULL),
-(138, 155, 'assets/uploads/1602392573802.png', '2020-10-11 05:02:53', NULL),
-(139, 155, 'assets/uploads/1602392573803.png', '2020-10-11 05:02:53', NULL),
-(140, 156, 'assets/uploads/1602392574814.png', '2020-10-11 05:02:54', NULL),
-(141, 156, 'assets/uploads/1602392574825.png', '2020-10-11 05:02:54', NULL),
-(142, 156, 'assets/uploads/1602392574829.png', '2020-10-11 05:02:54', NULL),
-(143, 156, 'assets/uploads/1602392574831.png', '2020-10-11 05:02:54', NULL),
-(144, 157, 'assets/uploads/1602392618807.png', '2020-10-11 05:03:38', NULL),
-(145, 157, 'assets/uploads/1602392618819.png', '2020-10-11 05:03:38', NULL),
-(146, 157, 'assets/uploads/1602392618824.png', '2020-10-11 05:03:38', NULL),
-(147, 157, 'assets/uploads/1602392618826.png', '2020-10-11 05:03:38', NULL),
-(148, 158, 'assets/uploads/1602392657995.png', '2020-10-11 05:04:18', NULL),
-(149, 158, 'assets/uploads/1602392658018.png', '2020-10-11 05:04:18', NULL),
-(150, 158, 'assets/uploads/1602392658024.png', '2020-10-11 05:04:18', NULL),
-(151, 158, 'assets/uploads/1602392658027.png', '2020-10-11 05:04:18', NULL),
-(152, 159, 'assets/uploads/1602392761942.png', '2020-10-11 05:06:02', NULL),
-(153, 159, 'assets/uploads/1602392761959.png', '2020-10-11 05:06:02', NULL),
-(154, 159, 'assets/uploads/1602392761965.png', '2020-10-11 05:06:02', NULL),
-(155, 159, 'assets/uploads/1602392761966.png', '2020-10-11 05:06:02', NULL),
-(156, 161, 'assets/uploads/1602392811167.png', '2020-10-11 05:06:51', NULL),
-(157, 161, 'assets/uploads/1602392811180.png', '2020-10-11 05:06:51', NULL),
-(158, 161, 'assets/uploads/1602392811184.png', '2020-10-11 05:06:51', NULL),
-(159, 161, 'assets/uploads/1602392811186.png', '2020-10-11 05:06:51', NULL),
-(160, 162, 'assets/uploads/1602392885587.png', '2020-10-11 05:08:05', NULL),
-(161, 162, 'assets/uploads/1602392885594.png', '2020-10-11 05:08:05', NULL),
-(162, 162, 'assets/uploads/1602392885601.png', '2020-10-11 05:08:05', NULL),
-(163, 162, 'assets/uploads/1602392885605.png', '2020-10-11 05:08:05', NULL),
-(164, 163, 'assets/uploads/1602392887107.png', '2020-10-11 05:08:07', NULL),
-(165, 163, 'assets/uploads/1602392887125.png', '2020-10-11 05:08:07', NULL),
-(166, 163, 'assets/uploads/1602392887148.png', '2020-10-11 05:08:07', NULL),
-(167, 163, 'assets/uploads/1602392887163.png', '2020-10-11 05:08:07', NULL),
-(168, 164, 'assets/uploads/1602392888444.png', '2020-10-11 05:08:08', NULL),
-(169, 164, 'assets/uploads/1602392888469.png', '2020-10-11 05:08:08', NULL),
-(170, 164, 'assets/uploads/1602392888479.png', '2020-10-11 05:08:08', NULL),
-(171, 164, 'assets/uploads/1602392888482.png', '2020-10-11 05:08:08', NULL),
-(172, 165, 'assets/uploads/1602392889761.png', '2020-10-11 05:08:09', NULL),
-(173, 165, 'assets/uploads/1602392889769.png', '2020-10-11 05:08:09', NULL),
-(174, 165, 'assets/uploads/1602392889772.png', '2020-10-11 05:08:09', NULL),
-(175, 165, 'assets/uploads/1602392889774.png', '2020-10-11 05:08:09', NULL),
-(176, 166, 'assets/uploads/1602392890828.png', '2020-10-11 05:08:10', NULL),
-(177, 166, 'assets/uploads/1602392890836.png', '2020-10-11 05:08:10', NULL),
-(178, 166, 'assets/uploads/1602392890840.png', '2020-10-11 05:08:10', NULL),
-(179, 166, 'assets/uploads/1602392890841.png', '2020-10-11 05:08:10', NULL),
-(180, 167, 'assets/uploads/1602392891840.png', '2020-10-11 05:08:11', NULL),
-(181, 167, 'assets/uploads/1602392891848.png', '2020-10-11 05:08:11', NULL),
-(182, 167, 'assets/uploads/1602392891853.png', '2020-10-11 05:08:11', NULL),
-(183, 167, 'assets/uploads/1602392891858.png', '2020-10-11 05:08:11', NULL),
-(184, 168, 'assets/uploads/1602392892902.png', '2020-10-11 05:08:12', NULL),
-(185, 168, 'assets/uploads/1602392892912.png', '2020-10-11 05:08:12', NULL),
-(186, 168, 'assets/uploads/1602392892926.png', '2020-10-11 05:08:12', NULL),
-(187, 168, 'assets/uploads/1602392892928.png', '2020-10-11 05:08:12', NULL),
-(188, 169, 'assets/uploads/1602392893777.png', '2020-10-11 05:08:13', NULL),
-(189, 169, 'assets/uploads/1602392893795.png', '2020-10-11 05:08:13', NULL),
-(190, 169, 'assets/uploads/1602392893799.png', '2020-10-11 05:08:13', NULL),
-(191, 169, 'assets/uploads/1602392893804.png', '2020-10-11 05:08:13', NULL),
-(192, 170, 'assets/uploads/1602392894892.png', '2020-10-11 05:08:14', NULL),
-(193, 170, 'assets/uploads/1602392894897.png', '2020-10-11 05:08:14', NULL),
-(194, 170, 'assets/uploads/1602392894905.png', '2020-10-11 05:08:14', NULL),
-(195, 170, 'assets/uploads/1602392894907.png', '2020-10-11 05:08:14', NULL),
-(196, 171, 'assets/uploads/1602393221954.png', '2020-10-11 05:13:42', NULL),
-(197, 171, 'assets/uploads/1602393221968.png', '2020-10-11 05:13:42', NULL),
-(198, 171, 'assets/uploads/1602393221980.png', '2020-10-11 05:13:42', NULL),
-(199, 171, 'assets/uploads/1602393221983.png', '2020-10-11 05:13:42', NULL),
-(200, 172, 'assets/uploads/1602397956690.png', '2020-10-11 06:32:36', NULL),
-(201, 172, 'assets/uploads/1602397956705.png', '2020-10-11 06:32:36', NULL),
-(202, 172, 'assets/uploads/1602397956719.png', '2020-10-11 06:32:36', NULL),
-(203, 172, 'assets/uploads/1602397956725.png', '2020-10-11 06:32:36', NULL);
+(204, 174, 'assets/uploads/1603084918490.png', '2020-10-19 05:21:58', NULL),
+(205, 174, 'assets/uploads/1603084918493.png', '2020-10-19 05:21:58', NULL),
+(206, 174, 'assets/uploads/1603084918497.png', '2020-10-19 05:21:58', NULL),
+(207, 174, 'assets/uploads/1603084918512.png', '2020-10-19 05:21:58', NULL),
+(208, 175, 'assets/uploads/1603084935826.png', '2020-10-19 05:22:15', NULL),
+(209, 175, 'assets/uploads/1603084935832.png', '2020-10-19 05:22:15', NULL),
+(210, 175, 'assets/uploads/1603084935835.png', '2020-10-19 05:22:15', NULL),
+(211, 175, 'assets/uploads/1603084935857.png', '2020-10-19 05:22:15', NULL),
+(212, 176, 'assets/uploads/1603084937578.png', '2020-10-19 05:22:17', NULL),
+(213, 176, 'assets/uploads/1603084937580.png', '2020-10-19 05:22:17', NULL),
+(214, 176, 'assets/uploads/1603084937583.png', '2020-10-19 05:22:17', NULL),
+(215, 176, 'assets/uploads/1603084937587.png', '2020-10-19 05:22:17', NULL),
+(216, 177, 'assets/uploads/1603084939147.png', '2020-10-19 05:22:19', NULL),
+(217, 177, 'assets/uploads/1603084939150.png', '2020-10-19 05:22:19', NULL),
+(218, 177, 'assets/uploads/1603084939157.png', '2020-10-19 05:22:19', NULL),
+(219, 177, 'assets/uploads/1603084939166.png', '2020-10-19 05:22:19', NULL),
+(220, 178, 'assets/uploads/1603084940528.png', '2020-10-19 05:22:20', NULL),
+(221, 178, 'assets/uploads/1603084940529.png', '2020-10-19 05:22:20', NULL),
+(222, 178, 'assets/uploads/1603084940535.png', '2020-10-19 05:22:20', NULL),
+(223, 178, 'assets/uploads/1603084940539.png', '2020-10-19 05:22:20', NULL),
+(224, 179, 'assets/uploads/1603084941846.png', '2020-10-19 05:22:21', NULL),
+(225, 179, 'assets/uploads/1603084941848.png', '2020-10-19 05:22:21', NULL),
+(226, 179, 'assets/uploads/1603084941855.png', '2020-10-19 05:22:21', NULL),
+(227, 179, 'assets/uploads/1603084941861.png', '2020-10-19 05:22:21', NULL),
+(228, 180, 'assets/uploads/1603084943155.png', '2020-10-19 05:22:23', NULL),
+(229, 180, 'assets/uploads/1603084943157.png', '2020-10-19 05:22:23', NULL),
+(230, 180, 'assets/uploads/1603084943159.png', '2020-10-19 05:22:23', NULL),
+(231, 180, 'assets/uploads/1603084943164.png', '2020-10-19 05:22:23', NULL),
+(232, 181, 'assets/uploads/1603084944452.png', '2020-10-19 05:22:24', NULL),
+(233, 181, 'assets/uploads/1603084944453.png', '2020-10-19 05:22:24', NULL),
+(234, 181, 'assets/uploads/1603084944455.png', '2020-10-19 05:22:24', NULL),
+(235, 181, 'assets/uploads/1603084944458.png', '2020-10-19 05:22:24', NULL),
+(236, 182, 'assets/uploads/1603084945631.png', '2020-10-19 05:22:25', NULL),
+(237, 182, 'assets/uploads/1603084945633.png', '2020-10-19 05:22:25', NULL),
+(238, 182, 'assets/uploads/1603084945637.png', '2020-10-19 05:22:25', NULL),
+(239, 182, 'assets/uploads/1603084945688.png', '2020-10-19 05:22:25', NULL),
+(240, 183, 'assets/uploads/1603084946786.png', '2020-10-19 05:22:26', NULL),
+(241, 183, 'assets/uploads/1603084946790.png', '2020-10-19 05:22:26', NULL),
+(242, 183, 'assets/uploads/1603084946792.png', '2020-10-19 05:22:26', NULL),
+(243, 183, 'assets/uploads/1603084946799.png', '2020-10-19 05:22:26', NULL),
+(244, 184, 'assets/uploads/1603084997170.png', '2020-10-19 05:23:17', NULL),
+(245, 184, 'assets/uploads/1603084997172.png', '2020-10-19 05:23:17', NULL),
+(246, 184, 'assets/uploads/1603084997176.png', '2020-10-19 05:23:17', NULL),
+(247, 184, 'assets/uploads/1603084997178.png', '2020-10-19 05:23:17', NULL),
+(248, 185, 'assets/uploads/1603084998429.png', '2020-10-19 05:23:18', NULL),
+(249, 185, 'assets/uploads/1603084998430.png', '2020-10-19 05:23:18', NULL),
+(250, 185, 'assets/uploads/1603084998433.png', '2020-10-19 05:23:18', NULL),
+(251, 185, 'assets/uploads/1603084998438.png', '2020-10-19 05:23:18', NULL),
+(252, 186, 'assets/uploads/1603084999948.png', '2020-10-19 05:23:19', NULL),
+(253, 186, 'assets/uploads/1603084999950.png', '2020-10-19 05:23:19', NULL),
+(254, 186, 'assets/uploads/1603084999952.png', '2020-10-19 05:23:19', NULL),
+(255, 186, 'assets/uploads/1603084999954.png', '2020-10-19 05:23:19', NULL),
+(256, 187, 'assets/uploads/1603085001085.png', '2020-10-19 05:23:21', NULL),
+(257, 187, 'assets/uploads/1603085001086.png', '2020-10-19 05:23:21', NULL),
+(258, 187, 'assets/uploads/1603085001093.png', '2020-10-19 05:23:21', NULL),
+(259, 187, 'assets/uploads/1603085001095.png', '2020-10-19 05:23:21', NULL),
+(260, 188, 'assets/uploads/1603085002357.png', '2020-10-19 05:23:22', NULL),
+(261, 188, 'assets/uploads/1603085002358.png', '2020-10-19 05:23:22', NULL),
+(262, 188, 'assets/uploads/1603085002366.png', '2020-10-19 05:23:22', NULL),
+(263, 188, 'assets/uploads/1603085002371.png', '2020-10-19 05:23:22', NULL),
+(264, 189, 'assets/uploads/1603085003877.png', '2020-10-19 05:23:23', NULL),
+(265, 189, 'assets/uploads/1603085003878.png', '2020-10-19 05:23:23', NULL),
+(266, 189, 'assets/uploads/1603085003885.png', '2020-10-19 05:23:23', NULL),
+(267, 189, 'assets/uploads/1603085003886.png', '2020-10-19 05:23:23', NULL),
+(268, 190, 'assets/uploads/1603085005010.png', '2020-10-19 05:23:25', NULL),
+(269, 190, 'assets/uploads/1603085005014.png', '2020-10-19 05:23:25', NULL),
+(270, 190, 'assets/uploads/1603085005016.png', '2020-10-19 05:23:25', NULL),
+(271, 190, 'assets/uploads/1603085005017.png', '2020-10-19 05:23:25', NULL),
+(272, 191, 'assets/uploads/1603085006067.png', '2020-10-19 05:23:26', NULL),
+(273, 191, 'assets/uploads/1603085006069.png', '2020-10-19 05:23:26', NULL),
+(274, 191, 'assets/uploads/1603085006071.png', '2020-10-19 05:23:26', NULL),
+(275, 191, 'assets/uploads/1603085006072.png', '2020-10-19 05:23:26', NULL),
+(276, 192, 'assets/uploads/1603085007385.png', '2020-10-19 05:23:27', NULL),
+(277, 192, 'assets/uploads/1603085007387.png', '2020-10-19 05:23:27', NULL),
+(278, 192, 'assets/uploads/1603085007389.png', '2020-10-19 05:23:27', NULL),
+(279, 192, 'assets/uploads/1603085007390.png', '2020-10-19 05:23:27', NULL),
+(280, 193, 'assets/uploads/1603085008361.png', '2020-10-19 05:23:28', NULL),
+(281, 193, 'assets/uploads/1603085008363.png', '2020-10-19 05:23:28', NULL),
+(282, 193, 'assets/uploads/1603085008366.png', '2020-10-19 05:23:28', NULL),
+(283, 193, 'assets/uploads/1603085008368.png', '2020-10-19 05:23:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -309,32 +290,48 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `name`, `price`, `description`, `category_id`, `color_id`, `condition_id`, `seller_id`, `create_at`, `update_at`) VALUES
-(147, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:37', '2020-10-11 05:02:37'),
-(148, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:45', '2020-10-11 05:02:45'),
-(149, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:46', '2020-10-11 05:02:46'),
-(150, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:47', '2020-10-11 05:02:47'),
-(151, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:48', '2020-10-11 05:02:48'),
-(152, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:50', '2020-10-11 05:02:50'),
-(153, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:51', '2020-10-11 05:02:51'),
-(154, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:52', '2020-10-11 05:02:52'),
-(155, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:53', '2020-10-11 05:02:53'),
-(156, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:02:54', '2020-10-11 05:02:54'),
-(157, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:03:38', '2020-10-11 05:03:38'),
-(158, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:04:18', '2020-10-11 05:04:18'),
-(159, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:06:02', '2020-10-11 05:06:02'),
-(160, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:06:35', '2020-10-11 05:06:35'),
-(161, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-11 05:06:51', '2020-10-11 05:06:51'),
-(162, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:05', '2020-10-11 05:08:05'),
-(163, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:07', '2020-10-11 05:08:07'),
-(164, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:08', '2020-10-11 05:08:08'),
-(165, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:09', '2020-10-11 05:08:09'),
-(166, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:10', '2020-10-11 05:08:10'),
-(167, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:11', '2020-10-11 05:08:11'),
-(168, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:12', '2020-10-11 05:08:12'),
-(169, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:13', '2020-10-11 05:08:13'),
-(170, 't-shirt screamous ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:08:14', '2020-10-11 05:08:14'),
-(171, 'baju gaul ', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-11 05:13:42', '2020-10-11 05:13:42'),
-(172, 'baju gaul ', 120000, 'baju anak muda ternma di bandung', 4, 1, 2, 29, '2020-10-11 06:32:36', '2020-10-11 06:32:36');
+(174, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:21:58', '2020-10-19 05:21:58'),
+(175, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:15', '2020-10-19 05:22:15'),
+(176, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:17', '2020-10-19 05:22:17'),
+(177, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:19', '2020-10-19 05:22:19'),
+(178, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:20', '2020-10-19 05:22:20'),
+(179, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:21', '2020-10-19 05:22:21'),
+(180, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:23', '2020-10-19 05:22:23'),
+(181, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:24', '2020-10-19 05:22:24'),
+(182, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:25', '2020-10-19 05:22:25'),
+(183, 'T-SHIRT screamouse black', 120000, 'baju anak muda ternma di bandung', 14, 1, 1, 29, '2020-10-19 05:22:26', '2020-10-19 05:22:26'),
+(184, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:17', '2020-10-19 05:23:17'),
+(185, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:18', '2020-10-19 05:23:18'),
+(186, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:19', '2020-10-19 05:23:19'),
+(187, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:21', '2020-10-19 05:23:21'),
+(188, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:22', '2020-10-19 05:23:22'),
+(189, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:23', '2020-10-19 05:23:23'),
+(190, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:25', '2020-10-19 05:23:25'),
+(191, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:26', '2020-10-19 05:23:26'),
+(192, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:27', '2020-10-19 05:23:27'),
+(193, 'T-SHIRT The simpson', 120000, 'baju anak muda ternma di bandung', 14, 1, 2, 29, '2020-10-19 05:23:28', '2020-10-19 05:23:28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rating`
+--
+
+CREATE TABLE `rating` (
+  `id` int(11) NOT NULL,
+  `items_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rating`
+--
+
+INSERT INTO `rating` (`id`, `items_id`, `user_id`, `rating`, `created_at`, `updated_at`) VALUES
+(5, 174, 80, 4, '2020-10-19 05:23:56', '2020-10-19 05:23:56');
 
 -- --------------------------------------------------------
 
@@ -378,6 +375,36 @@ CREATE TABLE `store` (
 INSERT INTO `store` (`id`, `name`, `user_id`, `information`) VALUES
 (2, 'tokoBaju', 53, 'toko baju terpercaya'),
 (4, 'storekokom', 78, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `transaction_id` varchar(225) NOT NULL,
+  `seller_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `items_name` varchar(50) NOT NULL,
+  `price` int(12) NOT NULL,
+  `qty` int(12) NOT NULL,
+  `total_price` int(12) NOT NULL,
+  `delivery_fee` int(12) NOT NULL,
+  `summary` int(12) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `transaction_id`, `seller_id`, `user_id`, `items_name`, `price`, `qty`, `total_price`, `delivery_fee`, `summary`, `created_at`) VALUES
+(7, 'BLANJA1603083187592', 29, 80, 'baju gaul ', 120000, 2, 240000, 10000, 250000, '2020-10-19 04:53:07'),
+(8, 'BLANJA1603083187592', 29, 80, 'baju gaul ', 120000, 2, 240000, 10000, 250000, '2020-10-19 04:53:07'),
+(9, 'BLANJA1603083187592', 29, 80, 'baju gaul ', 120000, 2, 240000, 10000, 250000, '2020-10-19 04:53:07'),
+(10, 'BLANJA1603083187592', 29, 80, 'baju gaul ', 120000, 2, 240000, 10000, 250000, '2020-10-19 04:53:07');
 
 -- --------------------------------------------------------
 
@@ -509,7 +536,15 @@ ALTER TABLE `items`
   ADD KEY `seller_id` (`seller_id`),
   ADD KEY `items_ibfk_2` (`category_id`),
   ADD KEY `items_ibfk_3` (`condition_id`),
-  ADD KEY `color_id` (`color_id`);
+  ADD KEY `items_ibfk_4` (`color_id`);
+
+--
+-- Indexes for table `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `items_id` (`items_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `role`
@@ -523,6 +558,14 @@ ALTER TABLE `role`
 ALTER TABLE `store`
   ADD PRIMARY KEY (`id`),
   ADD KEY `store_ibfk_1` (`user_id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `seller_id` (`seller_id`);
 
 --
 -- Indexes for table `userDetail`
@@ -547,13 +590,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -583,13 +626,19 @@ ALTER TABLE `gender`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=284;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+
+--
+-- AUTO_INCREMENT for table `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -602,6 +651,12 @@ ALTER TABLE `role`
 --
 ALTER TABLE `store`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `userDetail`
@@ -645,13 +700,26 @@ ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `items_ibfk_3` FOREIGN KEY (`condition_id`) REFERENCES `conditions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `items_ibfk_4` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`);
+  ADD CONSTRAINT `items_ibfk_4` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `rating`
+--
+ALTER TABLE `rating`
+  ADD CONSTRAINT `rating_ibfk_1` FOREIGN KEY (`items_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `store`
 --
 ALTER TABLE `store`
   ADD CONSTRAINT `store_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `userDetail`
