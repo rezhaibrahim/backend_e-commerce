@@ -50,19 +50,19 @@ module.exports = {
   // ORDER BY ${arr[2]} ${arr[3]}
   getModel: (arr, data = []) => {
     console.log("Cek",arr[3]);
-    const query = `SELECT ${column} FROM ${table} ${join} WHERE items.${arr[0]} LIKE '%${arr[1]}%' GROUP BY items.name items.id ORDER BY items.${arr[2]} ${arr[3]} LIMIT ? OFFSET ?`
+    const query = `SELECT ${column} FROM ${table} ${join} WHERE items.${arr[0]} LIKE '%${arr[1]}%' GROUP BY items.id, items.name ORDER BY items.${arr[2]} ${arr[3]} LIMIT ? OFFSET ?`
     const results = model(query, data)
     return results
   },
   getNewModel: (arr, data = []) => {
     console.log("Cek",arr[3]);
-    const query = `SELECT ${column} FROM ${table} ${join} WHERE items.${arr[0]} LIKE '%${arr[1]}%' AND items.condition_id = 1  GROUP BY items.id ORDER BY items.${arr[2]} ${arr[3]} LIMIT ? OFFSET ?`
+    const query = `SELECT ${column} FROM ${table} ${join} WHERE items.${arr[0]} LIKE '%${arr[1]}%' AND items.condition_id = 1  GROUP BY items.id, items.name ORDER BY items.${arr[2]} ${arr[3]} LIMIT ? OFFSET ?`
     const results = model(query, data)
     return results
   },
   getPopularModel: (arr, data = []) => {
     console.log("Cek",arr[3]);
-    const query = `SELECT ${column} FROM ${table} ${join} WHERE items.${arr[0]} LIKE '%${arr[1]}%' AND items.condition_id = 2 GROUP BY items.name items.id ORDER BY items.${arr[2]} ${arr[3]} LIMIT ? OFFSET ?`
+    const query = `SELECT ${column} FROM ${table} ${join} WHERE items.${arr[0]} LIKE '%${arr[1]}%' AND items.condition_id = 2 GROUP BY items.id, items.name ORDER BY items.${arr[2]} ${arr[3]} LIMIT ? OFFSET ?`
     const results = model(query, data)
     return results
   },
