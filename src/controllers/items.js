@@ -4,6 +4,7 @@ const { productSchema: schema } = require('../helpers/schemaValidation')
 const searching = require('../helpers/search')
 const sorting = require('../helpers/sort')
 const paging = require('../helpers/pagination')
+const { json } = require('body-parser')
 
 module.exports = {
   create: async (req, res) => {
@@ -105,10 +106,25 @@ module.exports = {
   },
   detailItems: async (req, res) => {
     const { id } = req.params
-
     const results = await itemsModel.detailModel(id)
-    if (results.length) {
-      responseStandard(res, `Product with id ${id}`, { results })
+    const resultsData= results[0]
+    const image = await itemsModel.getPicture(id)
+    // const image1 = image[0].picture.split()
+    // const image2 = image[1].picture.split()
+    // const image3 = image[2].picture.split()
+    // const image4 = image[3].picture.split()
+    // const pictureConvert= image1.concat(image2,image3,image4)
+    // const picture=Object.assign({}, pictureConvert)
+    const picture = image.map(x => x.picture)
+    
+    const result={
+      ...resultsData,
+      picture
+    }
+    console.log("data:",result);
+    console.log(result);
+    if (results[0].id !== null) {
+      responseStandard(res, `Product with id ${id}`, { result })
     } else {
       responseStandard(res, `Product with id ${id} is not found`, {}, 404, false)
     }

@@ -3,7 +3,7 @@ const qs = require('querystring')
 const { APP_URL } = process.env
 
 module.exports = (req, totalData) => {
-  let { page = 1, limit = 10 } = req.query
+  let { page = 1, limit = 14 } = req.query
   page = parseInt(page)
   limit = parseInt(limit)
   if (page < 1) {

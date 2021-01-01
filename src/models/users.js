@@ -6,7 +6,7 @@ const model = require('../helpers/connectionDB')
 
 // const column = `${table}.id, ${tableRole}.name AS ${tableRole}, ${tableDetail}.name, ${table}.email, ${table}.password, ${tableDetail}.phone, ${tableGender}.name AS ${tableGender}, ${tableDetail}.birthdate, ${tableDetail}.create_at, ${tableDetail}.update_at`
 // const join = `INNER JOIN ${tableDetail} ON ${tableDetail}.user_id=${table}.id INNER JOIN ${tableRole} ON ${tableRole}.id=${table}.role_id INNER JOIN ${tableGender} ON ${tableGender}.id=${tableDetail}.gender_id`
-const column = 'users.id, userDetail.name, users.email, users.password, userDetail.phone, gender.name AS gender, userDetail.birthdate, userDetail.picture AS profile_picture'
+const column = 'users.id, userDetail.name, users.email, users.password, userDetail.phone, gender.name AS gender, userDetail.birthdate, userDetail.image AS profile_picture'
 const join = 'INNER JOIN userDetail ON userDetail.user_id=users.id INNER JOIN gender ON gender.id=userDetail.gender_id'
 
 module.exports = {

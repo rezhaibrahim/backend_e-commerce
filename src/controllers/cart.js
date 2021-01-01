@@ -13,6 +13,7 @@ module.exports = {
       return responseStandard(res, 'Error', { error: error.message }, 400, false)
     } else {
       const { itemsId, qty } = results
+      console.log(results);
       const cart = {
         user_id: userId,
         items_id: itemsId,
@@ -24,6 +25,7 @@ module.exports = {
           id: createCart.insertId,
           ...cart
         }
+        console.log(createCart);
         return responseStandard(res, 'Add cart succesfully!', { data: data },200)
       } else {
         return responseStandard(res, 'Failed to add cart', {}, 400, false)
