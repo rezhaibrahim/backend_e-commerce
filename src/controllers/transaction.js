@@ -66,7 +66,8 @@ module.exports = {
           transaction_id: item.transaction_id,
           store: item.store,
           quantity: item.quantity,
-          summary: item.summary
+          summary: item.summary,
+          created_at: item.created_at
         }
         return item
       })
