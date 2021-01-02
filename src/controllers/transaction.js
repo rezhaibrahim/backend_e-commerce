@@ -51,7 +51,7 @@ module.exports = {
       return responseStandard(res, 'You don\'t have product in cart', {}, 400, false)
     }
   },
-  get: async (req, res) => {
+  getOrder: async (req, res) => {
     const { searchKey, searchValue } = searching.transaction(req.query.search)
     const count = await transactionModel.countModel([searchKey, searchValue])
     const page = paging(req, count[0].count)

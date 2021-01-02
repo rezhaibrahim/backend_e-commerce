@@ -41,7 +41,7 @@ router.post('/rating/:id', ratingController.create) // give rating
 
 // checkout
 router.post('/checkout', transactionController.create)
-router.get('/order', transactionController.get)
+router.get('/order', transactionController.getOrder)
 router.get('/order/:id', transactionController.detail)
 
 module.exports = router
