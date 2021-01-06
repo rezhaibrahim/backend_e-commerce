@@ -28,6 +28,7 @@ module.exports = {
           const detail = {
             user_id: createUser.insertId,
             name: name,
+            email:email
           }
           
           const createDetail = await usersModel.createDetailModel(detail)
@@ -185,11 +186,11 @@ module.exports = {
 
                 usersModel.updateCostumerPartialModel(id, patchData, (error, result) => {
                   if (!error) {
-                    console.log(result.affectedRows);
+                    console.log(result);
                     if (result.affectedRows) {
-                      if (res[0].image !== '') {
-                        fs.unlinkSync(`assets/${res[0].image}`)
-                      }
+                      // if (res[0].image !== '') {
+                      //   fs.unlinkSync(`uploads/`+ `${res[0].image}`)
+                      // }
                       return responseStandard(response, `Success update costumer with ID ${id}!`, {})
                     } else {
                       return responseStandard(response, `Update failed! ID ${id} not found`, {}, 400, false)

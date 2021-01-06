@@ -6,8 +6,8 @@ const model = require('../helpers/connectionDB')
 const db = require('../helpers/db')
 // const column = `${table}.id, ${tableRole}.name AS ${tableRole}, ${tableDetail}.name, ${table}.email, ${table}.password, ${tableDetail}.phone, ${tableGender}.name AS ${tableGender}, ${tableDetail}.birthdate, ${tableDetail}.create_at, ${tableDetail}.update_at`
 // const join = `INNER JOIN ${tableDetail} ON ${tableDetail}.user_id=${table}.id INNER JOIN ${tableRole} ON ${tableRole}.id=${table}.role_id INNER JOIN ${tableGender} ON ${tableGender}.id=${tableDetail}.gender_id`
-const column = 'users.id, userDetail.name, users.email, users.password, userDetail.phone, gender.name AS gender, userDetail.birthdate, userDetail.image AS profile_picture'
-const join = 'INNER JOIN userDetail ON userDetail.user_id=users.id INNER JOIN gender ON gender.id=userDetail.gender_id'
+const column = ' userDetail.name, userDetail.email, userDetail.phone, gender.name AS gender, userDetail.birthdate, userDetail.image AS profile_picture'
+const join = 'LEFT JOIN  gender ON gender.id=userDetail.gender_id'
 
 module.exports = {
   createUserModel: (data = {}) => { 
@@ -45,7 +45,7 @@ module.exports = {
     return results
   },
   detailUserModel: (data = {}) => { 
-    const query = `SELECT ${column} FROM ${table} ${join} WHERE users.id=?`
+    const query = `SELECT ${column} FROM ${tableDetail} ${join} WHERE ${tableDetail}.user_id=?`
     const results = model(query, data)
     return results
   },
@@ -77,7 +77,7 @@ module.exports = {
     })
   },
   getDetailCostumerModel: (id, cb) => {
-    db.query(`select a.id, email, b.name, phone, birthdate,gender_id, image,c.name AS gender from users a INNER join userDetail b on b.user_id = a.id INNER join gender c on c.id = b.gender_id where a.id = ${id} `, (error, result, fields) => {
+    db.query(`SELECT ${column} FROM ${tableDetail} ${join} WHERE ${tableDetail}.user_id=${id} `, (error, result, fields) => {
       cb(error, result)
     })
   },
