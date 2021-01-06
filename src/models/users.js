@@ -3,7 +3,7 @@ const tableDetail = 'userDetail'
 const tableRole='role'
 const tableGender='gender'
 const model = require('../helpers/connectionDB')
-
+const db = require('../helpers/db')
 // const column = `${table}.id, ${tableRole}.name AS ${tableRole}, ${tableDetail}.name, ${table}.email, ${table}.password, ${tableDetail}.phone, ${tableGender}.name AS ${tableGender}, ${tableDetail}.birthdate, ${tableDetail}.create_at, ${tableDetail}.update_at`
 // const join = `INNER JOIN ${tableDetail} ON ${tableDetail}.user_id=${table}.id INNER JOIN ${tableRole} ON ${tableRole}.id=${table}.role_id INNER JOIN ${tableGender} ON ${tableGender}.id=${tableDetail}.gender_id`
 const column = 'users.id, userDetail.name, users.email, users.password, userDetail.phone, gender.name AS gender, userDetail.birthdate, userDetail.image AS profile_picture'
@@ -69,6 +69,17 @@ module.exports = {
     const query = `UPDATE ${table} SET ? WHERE id=?`
     const results = model(query, data)
     return results
+  },
+  updateCostumerPartialModel: (id, data, cb) => {
+    console.log('cek',data);
+    db.query(`update ${tableDetail} set ${data} where user_id = ${id}`, (error, result, fields) => {
+      cb(error, result)
+    })
+  },
+  getDetailCostumerModel: (id, cb) => {
+    db.query(`select a.id, email, b.name, phone, birthdate,gender_id, image,c.name AS gender from users a INNER join userDetail b on b.user_id = a.id INNER join gender c on c.id = b.gender_id where a.id = ${id} `, (error, result, fields) => {
+      cb(error, result)
+    })
   },
   updateDetailPartialModel: (arr, data = []) => { // update detail (name, picture, phone, gender_id, birthdate)
     const query = `UPDATE ${tableDetail} SET ${arr} WHERE user_id=?`

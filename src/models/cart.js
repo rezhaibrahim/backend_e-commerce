@@ -60,5 +60,5 @@ module.exports = {
     const query = `DELETE FROM ${table} WHERE user_id=?`
     const results = model(query, data)
     return results
-  }
+  },
 }

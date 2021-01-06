@@ -4,6 +4,8 @@ const searching = require('../helpers/search')
 const responseStandard = require('../helpers/response')
 const { custSchema: schemaC,updateCustSchema:updateSchema } = require('../helpers/schemaValidation')
 const bcrypt = require('bcrypt')
+const upload = require('../helpers/upload')
+const fs = require('fs')
 
 module.exports = {
   createCustomer: async (req, res) => {
@@ -152,6 +154,63 @@ module.exports = {
       }
     }
   },
+  updateCostumerPartial: (request, response) => {
+    const uploadImage = upload.single('image')
+    const { id } = request.data
+    
+
+   usersModel.getDetailCostumerModel(id, (err, res) => {
+      if (!err) {
+        if (res.length) {
+          uploadImage(request, response, (error) => {
+            if (error) {
+              return responseStandard(response, error.message, {}, 400, false)
+            } else {
+              const image = request.file
+              const { email = '', password = '', name = '', phone = '', birthdate = '', gender_id = '' } = request.body
+              console.log(request.body);
+              if (email.trim() || password.trim() || name.trim() || phone.trim() || birthdate.trim() || gender_id.trim() || image) {
+                const patchData = Object.entries(request.body).map(el => {
+                  if (el[0] === 'password') {
+                    const salt = bcrypt.genSaltSync(10)
+                    const hashedPassword = bcrypt.hashSync(password, salt)
+                    return `${el[0]} = '${hashedPassword}'`
+                  }
+                  return `${el[0]} = '${el[1].replace(/'/gi, "''")}'`
+                })
+
+                if (image) {
+                  patchData.push(`image = 'uploads/${image.filename}'`)
+                }
+
+                usersModel.updateCostumerPartialModel(id, patchData, (error, result) => {
+                  if (!error) {
+                    console.log(result.affectedRows);
+                    if (result.affectedRows) {
+                      if (res[0].image !== '') {
+                        fs.unlinkSync(`assets/${res[0].image}`)
+                      }
+                      return responseStandard(response, `Success update costumer with ID ${id}!`, {})
+                    } else {
+                      return responseStandard(response, `Update failed! ID ${id} not found`, {}, 400, false)
+                    }
+                  } else {
+                    return responseStandard(response, error.message, {}, 500, false)
+                  }
+                })
+              } else {
+                return responseStandard(response, 'All field must be fill', {}, 400, false)
+              }
+            }
+          })
+        } else {
+          return responseStandard(response, 'No data found', {}, 200, false)
+        }
+      } else {
+        return responseStandard(response, err.message, {}, 500, false)
+      }
+    })
+  },
   
   deleteUser: async (req, res) => {
     const { id } = req.data
@@ -227,5 +286,5 @@ console.log(roleId,email);
     } else {
       return responseStandard(res, 'All fields must be filled!', {}, 400, false)
     }
-  }
+  },
 }

@@ -9,7 +9,8 @@ const ratingController = require('../controllers/rating')
 const transactionController = require('../controllers/transaction')
 // user detail
 router.get('/detail', usersController.getDetailUser) // show user detail
-router.put('/edit', upload.single('picture'), usersController.updateUser) // edit user detail
+router.put('/edit', upload.single('picture'), usersController.updateUser)
+router.patch('/update', usersController.updateCostumerPartial ) // edit user detail
 // router.patch('/update', usersController.updateUserPartial) // edit user email & password
 // router.patch('/edit/detail', usersController.updateDetailPartial)
 router.delete('/delete', usersController.deleteUser) // delete user

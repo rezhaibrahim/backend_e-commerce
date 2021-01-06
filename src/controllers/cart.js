@@ -42,9 +42,14 @@ module.exports = {
     const { limitData: limit } = pageInfo
 
     const results = await cartModel.getModel([searchKey, searchValue, sortKey, sortBy], [userId, limit, offset])
-    console.log(results[0]);
+    // console.log(results[0]);
+    
     if (results.length) {
-      return responseStandard(res, 'My Cart', { results, pageInfo })
+      let summary = 0
+      Object.values(results).forEach(e => {
+        summary += e.price * e.qty
+      })
+      return responseStandard(res, 'My Cart', { results,summary, pageInfo })
     } else {
       return responseStandard(res, 'There is no product in cart', {}, 404, false)
     }
